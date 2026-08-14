@@ -10,7 +10,19 @@
 
 <header class="navbar">
     <div class="navbar-container">
-        <a href="#" class="logo">CinéMatch</a>
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="17" y2="20"/><line x1="2" y1="9" x2="7" y2="9"/><line x1="2" y1="15" x2="7" y2="15"/><line x1="17" y1="9" x2="22" y2="9"/><line x1="17" y1="15" x2="22" y2="15"/></svg>
+            CinéMatch
+        </a>
+
+        <nav class="tabs" role="tablist">
+            <button id="tab-trending" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-trending">Tendances</button>
+            <button id="tab-favorites" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-favorites">
+                Mes favoris
+                <span id="favorites-count" class="favorites-badge">0</span>
+            </button>
+        </nav>
+
         <button id="theme-toggle" class="theme-toggle" aria-label="Changer de theme">
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -32,10 +44,16 @@
         </div>
     </section>
 
-    <section class="movies-section">
+    <section id="panel-trending" class="movies-section visible-panel" role="tabpanel" aria-labelledby="tab-trending">
         <h2 class="sr-only">Liste des films populaires</h2>
         <div id="status-message" class="status-message"></div>
         <div id="movies-grid" class="movies-grid"></div>
+    </section>
+
+    <section id="panel-favorites" class="favorites-section" role="tabpanel" aria-labelledby="tab-favorites">
+        <h2 class="sr-only">Mes films favoris</h2>
+        <div id="favorites-grid" class="movies-grid"></div>
+        <p id="no-favorites" class="no-favorites">Aucun film en favori pour le moment</p>
     </section>
 </main>
 
@@ -47,6 +65,15 @@
     <p>&copy; 2026 CinéMatch, projet réalisé par MASSAMBA BOUESSO Christophe Darly</p>
     <p>Données fournies par <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a></p>
 </footer>
+
+<div id="modal-overlay" class="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+        <button id="modal-close" class="modal-close" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div id="modal-content" class="modal-content"></div>
+    </div>
+</div>
 
 <script src="js/script.js"></script>
 </body>
